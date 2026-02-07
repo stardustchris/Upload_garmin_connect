@@ -230,9 +230,37 @@ class GarminService:
             logger.error(f"❌ Erreur récupération sommeil: {e}")
             return None
 
-    # TODO: Implémenter upload workout
-    # Note: python-garminconnect ne semble pas avoir de méthode directe pour uploader des workouts
-    # Il faudra soit:
-    # 1. Utiliser garmin-workouts (mkuthan) en YAML
-    # 2. Reverse engineer l'API Garmin (risqué)
-    # 3. Utiliser des fichiers FIT
+    def upload_workout(self, workout_json: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Upload un workout vers Garmin Connect
+
+        Args:
+            workout_json: Structure JSON du workout (format parsé)
+
+        Returns:
+            Réponse Garmin avec workout ID
+
+        Raises:
+            ValueError: Si type de workout non supporté
+        """
+        if not self._is_authenticated:
+            self.connect()
+
+        try:
+            # Convertir JSON → format Garmin
+            from src.garmin_workout_converter import convert_to_garmin_cycling_workout
+
+            workout_type = workout_json.get('type', '').lower()
+
+            if 'cyclisme' in workout_type or 'cycling' in workout_type:
+                garmin_workout = convert_to_garmin_cycling_workout(workout_json)
+                logger.info(f"📤 Upload workout {workout_json['code']} vers Garmin...")
+                result = self.client.upload_workout(garmin_workout)
+                logger.info(f"✅ Workout uploadé: ID {result.get('workoutId', 'unknown')}")
+                return result
+            else:
+                raise ValueError(f"Type de workout non supporté: {workout_type}")
+
+        except Exception as e:
+            logger.error(f"❌ Erreur upload workout: {e}")
+            raise

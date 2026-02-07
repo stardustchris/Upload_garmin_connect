@@ -7,8 +7,7 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
+| #1278 | 5:34 PM | 🟣 | Garmin Workout Converter Implemented for Cycling JSON to API Format | ~572 |
 | #1209 | 4:39 PM | 🟣 | Garmin Connect Workout Uploader Implemented Using Direct API Integration | ~642 |
 | #1123 | 1:42 PM | 🟣 | Home Trainer Warmup Power Zones Standardized with Fixed Sequence | ~485 |
-| #1092 | 1:01 PM | 🟣 | PDF Workout Parser Successfully Implemented and Tested | ~498 |
-| #1089 | 1:00 PM | 🟣 | PDF Parser Successfully Extracts Triathlon Workouts | ~662 |
 </claude-mem-context>

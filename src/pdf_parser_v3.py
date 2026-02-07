@@ -481,12 +481,99 @@ class TriathlonPDFParserV3:
 
         if corps_full_text:
 
-            # Détecter si il y a des répétitions
+            # NOUVELLE APPROCHE: Détecter TOUTES les répétitions avec finditer()
             # IMPORTANT: Dans C19, le pattern inclut la position APRÈS: "3 x (...) (Position haute) :"
             repetition_pattern = r'(\d+)\s*x\s*\(([^)]+)\)\s*(?:\([^)]+\))?\s*:'
-            rep_match = re.search(repetition_pattern, corps_full_text)
+            all_repetitions = list(re.finditer(repetition_pattern, corps_full_text))
 
-            if rep_match:
+            if all_repetitions:
+                # Il y a des répétitions (1 ou plusieurs)
+                # Parser séquentiellement : blocs AVANT → REPETITION 1 → ENTRE → REPETITION 2 → APRÈS
+
+                current_pos = 0
+
+                for rep_idx, rep_match in enumerate(all_repetitions):
+                    # BLOCS AVANT cette répétition
+                    before_text = corps_full_text[current_pos:rep_match.start()]
+                    if before_text.strip():
+                        before_intervals = self._parse_mixed_intervals(
+                            before_text,
+                            "Corps de séance",
+                            is_home_trainer
+                        )
+                        intervals.extend(before_intervals)
+
+                    # CONTENU DE LA RÉPÉTITION
+                    repeat_count = int(rep_match.group(1))
+                    repeat_format = rep_match.group(2)  # Ex: "01:00-02:00-01:00-01:00"
+                    repeat_content_start = rep_match.end()
+
+                    # Compter le nombre d'intervalles attendus dans la répétition
+                    # Ex: "01:00-02:00-01:00-01:00" → 4 intervalles
+                    expected_intervals_count = len(repeat_format.split('-'))
+
+                    # Trouver la fin: soit la prochaine répétition, soit un bloc normal
+                    if rep_idx + 1 < len(all_repetitions):
+                        # Il y a une autre répétition après
+                        repeat_content_end = all_repetitions[rep_idx + 1].start()
+                    else:
+                        # Dernière répétition - aller jusqu'à la fin
+                        repeat_content_end = len(corps_full_text)
+
+                    repeat_content = corps_full_text[repeat_content_start:repeat_content_end]
+
+                    # Parser le contenu de la répétition (LIMITÉ au bon nombre d'intervalles)
+                    all_intervals_in_content = self._parse_repeat_block_content(
+                        repeat_content,
+                        "Corps de séance",
+                        is_home_trainer
+                    )
+
+                    # Prendre SEULEMENT les X premiers intervalles (selon le format)
+                    repeat_intervals_single = all_intervals_in_content[:expected_intervals_count]
+
+                    # Les intervalles restants sont du contenu intermédiaire
+                    # Ils seront parsés comme "BEFORE" de la répétition suivante
+                    # OU comme "AFTER" si c'est la dernière répétition
+                    if len(all_intervals_in_content) > expected_intervals_count:
+                        # Il y a des intervalles intermédiaires
+                        # Les ajouter comme intervalles normaux (pas répétés)
+                        intermediate_intervals = all_intervals_in_content[expected_intervals_count:]
+                        # NOTE: Ces intervalles seront ajoutés APRÈS l'expansion de la répétition
+                        # pour qu'ils apparaissent au bon endroit chronologiquement
+                        pass  # On les gérera après la boucle de répétition
+
+                    # Répéter X fois
+                    for iteration in range(repeat_count):
+                        for interval in repeat_intervals_single:
+                            interval_copy = interval.copy()
+                            interval_copy["repetition_iteration"] = iteration + 1
+                            interval_copy["repetition_total"] = repeat_count
+                            interval_copy["repetition_block"] = rep_idx + 1
+                            intervals.append(interval_copy)
+
+                    # Ajouter les intervalles intermédiaires (entre cette répétition et la suivante)
+                    if len(all_intervals_in_content) > expected_intervals_count:
+                        intermediate_intervals = all_intervals_in_content[expected_intervals_count:]
+                        for interval in intermediate_intervals:
+                            interval["between_repetitions"] = f"Between Block {rep_idx + 1} and {rep_idx + 2}"
+                            intervals.append(interval)
+
+                    current_pos = repeat_content_end
+
+                # BLOCS APRÈS toutes les répétitions
+                if current_pos < len(corps_full_text):
+                    after_text = corps_full_text[current_pos:]
+                    if after_text.strip():
+                        after_intervals = self._parse_mixed_intervals(
+                            after_text,
+                            "Corps de séance",
+                            is_home_trainer
+                        )
+                        intervals.extend(after_intervals)
+
+            elif False:  # Ancien code avec re.search() - désactivé
+                rep_match = re.search(repetition_pattern, corps_full_text)
                 repeat_count = int(rep_match.group(1))
                 repeat_start_pos = rep_match.start()
                 repeat_content_start = rep_match.end()
@@ -781,16 +868,34 @@ class TriathlonPDFParserV3:
                 continue
 
             # Parser intervalle simple (pas décomposé)
-            interval_match = re.search(
+            # Format 1: Avec position: "01:00 (Position haute) 80 à 85 200 à 210"
+            interval_match_with_pos = re.search(
                 r'(\d{1,2}:\d{2})\s+\(([^)]+)\)\s+(\d+\s*à\s*\d+)\s+(\d+\s*à\s*\d+)',
                 line
             )
 
-            if interval_match:
-                duration = interval_match.group(1)
-                position = interval_match.group(2)
-                cadence = interval_match.group(3).replace(' ', '')
-                power = interval_match.group(4).replace(' ', '')
+            # Format 2: Sans position: "01:00 80 à 85 200 à 210"
+            interval_match_no_pos = re.search(
+                r'(\d{1,2}:\d{2})\s+(\d+\s*à\s*\d+)\s+(\d+\s*à\s*\d+)',
+                line
+            )
+
+            if interval_match_with_pos:
+                duration = interval_match_with_pos.group(1)
+                position = interval_match_with_pos.group(2)
+                cadence = interval_match_with_pos.group(3).replace(' ', '')
+                power = interval_match_with_pos.group(4).replace(' ', '')
+            elif interval_match_no_pos:
+                duration = interval_match_no_pos.group(1)
+                position = None  # Pas de position spécifiée
+                cadence = interval_match_no_pos.group(2).replace(' ', '')
+                power = interval_match_no_pos.group(3).replace(' ', '')
+            else:
+                i += 1
+                continue
+
+            if True:  # Remplace le "if interval_match:"
+                # Code commun pour les deux formats
 
                 power_data = self.adjust_power_for_garmin(power, phase, is_home_trainer)
 

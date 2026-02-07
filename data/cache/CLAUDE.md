@@ -7,8 +7,5 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
-| #1280 | 5:55 PM | 🟣 | Workout Upload Method Implemented in Garmin Service | ~584 |
 | #1264 | 5:27 PM | 🟣 | Garmin Service Layer and Authentication Infrastructure | ~445 |
-| #1263 | " | ✅ | Added Garth Token Storage Path Configuration | ~362 |
-| #1255 | 5:23 PM | 🟣 | Implemented Garmin Connect Service for Data Retrieval | ~640 |
 </claude-mem-context>

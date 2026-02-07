@@ -7,5 +7,7 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
+| #1281 | 5:56 PM | 🟣 | Created C16 Workout Upload Test Script | ~463 |
+| #1264 | 5:27 PM | 🟣 | Garmin Service Layer and Authentication Infrastructure | ~445 |
 | #1252 | 5:20 PM | 🟣 | Created GitHub Repository Monitoring Script for python-garminconnect | ~517 |
 </claude-mem-context>
