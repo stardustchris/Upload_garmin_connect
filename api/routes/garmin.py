@@ -3,8 +3,20 @@
 from fastapi import APIRouter, HTTPException
 from typing import Dict, Any, Optional
 from datetime import datetime
+from api.services.garmin_service import GarminService
 
 router = APIRouter()
+
+# Instance du service Garmin (singleton)
+garmin_service = None
+
+
+def get_garmin_service() -> GarminService:
+    """Retourne l'instance du service Garmin (singleton)"""
+    global garmin_service
+    if garmin_service is None:
+        garmin_service = GarminService()
+    return garmin_service
 
 
 @router.get("/activities")
@@ -25,17 +37,15 @@ async def get_activities(
         List of activities
     """
     try:
-        # TODO: Implémenter fetch Garmin
-        # from api.services.garmin_service import GarminService
-        # garmin_service = GarminService()
-        # activities = garmin_service.fetch_activities(start_date, end_date, limit)
+        service = get_garmin_service()
+        activities = service.get_activities(start_date, end_date, limit)
 
         return {
             "status": "success",
-            "message": "Garmin fetch not yet implemented",
             "start_date": start_date,
             "end_date": end_date,
-            "limit": limit
+            "count": len(activities),
+            "activities": activities
         }
 
     except Exception as e:
@@ -57,12 +67,22 @@ async def get_weight(date: Optional[str] = None) -> Dict[str, Any]:
         if not date:
             date = datetime.now().strftime('%Y-%m-%d')
 
-        # TODO: Implémenter fetch weight
-        return {
-            "status": "success",
-            "message": "Weight fetch not yet implemented",
-            "date": date
-        }
+        service = get_garmin_service()
+        weight_kg = service.get_weight(date)
+
+        if weight_kg is not None:
+            return {
+                "status": "success",
+                "date": date,
+                "weight_kg": weight_kg
+            }
+        else:
+            return {
+                "status": "success",
+                "date": date,
+                "weight_kg": None,
+                "message": "Aucune donnée de poids pour cette date"
+            }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -77,16 +97,19 @@ async def test_garmin_connection() -> Dict[str, Any]:
         Connection status
     """
     try:
-        # TODO: Tester connexion Garmin
-        # from api.services.garmin_service import GarminService
-        # garmin_service = GarminService()
-        # is_connected = garmin_service.test_connection()
+        service = get_garmin_service()
+        result = service.test_connection()
 
-        return {
-            "status": "success",
-            "message": "Connection test not yet implemented",
-            "connected": False
-        }
+        if result["connected"]:
+            return {
+                "status": "success",
+                **result
+            }
+        else:
+            return {
+                "status": "error",
+                **result
+            }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

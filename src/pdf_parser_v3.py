@@ -273,7 +273,7 @@ class TriathlonPDFParserV3:
 
     def detect_repetition_pattern(self, text: str) -> Optional[Tuple[int, str, int, int]]:
         """
-        Détecte un pattern de répétition "X x (...) :"
+        Détecte un pattern de répétition "X x (...) :" ou "X x (...) (Position) :"
 
         Args:
             text: Texte à analyser
@@ -281,8 +281,10 @@ class TriathlonPDFParserV3:
         Returns:
             Tuple (repeat_count, pattern_matched, start_pos, end_pos) ou None
             Exemple: "3 x (04:00*-02:00-04:00**-02:00) :" → (3, "04:00*-02:00-04:00**-02:00", ...)
+            Exemple C19: "4 x (01:00-02:00-01:00-01:00) (Position haute) :" → (4, "01:00-02:00-01:00-01:00", ...)
         """
-        pattern = r'(\d+)\s*x\s*\(([\d:*-]+)\)\s*:'
+        # Pattern mis à jour pour C19: supporte (Position) optionnel après
+        pattern = r'(\d+)\s*x\s*\(([\d:*-]+)\)\s*(?:\([^)]+\))?\s*:'
         match = re.search(pattern, text)
 
         if match:
@@ -448,7 +450,8 @@ class TriathlonPDFParserV3:
                 })
 
         # Détecter répétitions PARTOUT dans le texte (pas seulement après "Corps de séance")
-        repetition_pattern = r'(\d+)\s*x\s*\(([^)]+)\)\s*:'
+        # IMPORTANT: Dans C19, le pattern inclut la position APRÈS: "3 x (...) (Position haute) :"
+        repetition_pattern = r'(\d+)\s*x\s*\(([^)]+)\)\s*(?:\([^)]+\))?\s*:'
         rep_match = re.search(repetition_pattern, text)
 
         if rep_match:
@@ -468,7 +471,9 @@ class TriathlonPDFParserV3:
                 corps_full_text = before_text + text[rep_start:]
         else:
             # Pas de répétitions - chercher section normale
-            corps_section_match = re.search(r'Corps de séance(.*?)Récupération', text, re.DOTALL)
+            # IMPORTANT: Dans C19, "Corps de séance" peut être collé à un intervalle sans ":"
+            # Ex: "Corps de séance 01:00 (Position haute) 90 à 95 220 à 230"
+            corps_section_match = re.search(r'Corps de séance\s*(.*?)Récupération', text, re.DOTALL)
             if corps_section_match:
                 corps_full_text = corps_section_match.group(1)
             else:
@@ -477,7 +482,8 @@ class TriathlonPDFParserV3:
         if corps_full_text:
 
             # Détecter si il y a des répétitions
-            repetition_pattern = r'(\d+)\s*x\s*\(([^)]+)\)\s*:'
+            # IMPORTANT: Dans C19, le pattern inclut la position APRÈS: "3 x (...) (Position haute) :"
+            repetition_pattern = r'(\d+)\s*x\s*\(([^)]+)\)\s*(?:\([^)]+\))?\s*:'
             rep_match = re.search(repetition_pattern, corps_full_text)
 
             if rep_match:
