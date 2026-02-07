@@ -1,0 +1,81 @@
+================================================================================
+WORKOUT C18 - sur HT - 2026-02-07
+Type: Indoor Cycling (Home Trainer)
+Durée totale: 1h00
+================================================================================
+
+📋 STRUCTURE COMPLÈTE DU WORKOUT (24 intervalles)
+
+
+============================================================
+  ECHAUFFEMENT
+============================================================
+ 1. 2:30  @ 96à106       |                      ⚠️ FORCÉ
+ 2. 2:30  @ 130à136      |                      ⚠️ FORCÉ
+ 3. 5:00  @ 156à166      |                      ⚠️ FORCÉ
+ 4. 5:00  @ 180à190      |                      ⚠️ FORCÉ
+
+============================================================
+  CORPS DE SÉANCE
+============================================================
+  └─  5. 04:00 @ 235à245      | Position haute      
+  └─  6. 03:00 @ 255à265      | Position haute      
+  └─  7. 01:00 @ 295à305      | Position haute      
+ 8. 02:00 @ 175à185      | Position aéro.      
+  └─  9. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 1/2]
+  └─ 10. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 1/2]
+  └─ 11. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 1/2]
+  └─ 12. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 1/2]
+13. 02:00 @ 175à185      | Position aéro.       [RÉPÉTITION 1/2]
+  └─ 14. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 2/2]
+  └─ 15. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 2/2]
+  └─ 16. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 2/2]
+  └─ 17. 02:00 @ 235à245      | Position haute       [RÉPÉTITION 2/2]
+18. 02:00 @ 175à185      | Position aéro.       [RÉPÉTITION 2/2]
+  └─ 19. 04:00 @ 235à245      | Position haute      
+  └─ 20. 03:00 @ 255à265      | Position haute      
+  └─ 21. 01:00 @ 295à305      | Position haute      
+22. 02:00 @ 175à185      | Position aéro.      
+
+============================================================
+  RÉCUPÉRATION
+============================================================
+23. 2:00  @ 175à180      |                      ⚠️ FORCÉ
+24. 2:00  @ 175à180      |                      ⚠️ FORCÉ
+
+================================================================================
+📊 RÉSUMÉ
+================================================================================
+  Corps de séance: 18 intervalles
+  Echauffement: 4 intervalles
+  Récupération: 2 intervalles
+
+  TOTAL: 24 intervalles
+
+================================================================================
+💡 INSTRUCTIONS POUR GARMIN CONNECT
+================================================================================
+
+1. Aller sur https://connect.garmin.com/modern/workout
+2. Créer un nouveau workout "Indoor Cycling"
+3. Nom: "C18 - HT (S06)"
+4. Date planifiée: 07/02/2026
+
+5. Ajouter les intervalles dans l'ordre:
+   - Échauffement : 4 steps (voir ci-dessus)
+   - Corps de séance : 18 steps (voir ci-dessus) 
+   - Récupération : 2 steps (voir ci-dessus)
+
+6. Pour chaque intervalle:
+   - Type: "Interval" ou "Warmup" ou "Cooldown" selon la phase
+   - Durée: [voir colonne durée]
+   - Target: Power Zone
+   - Puissance: [voir colonne puissance, format "XXX-XXXW"]
+   - NE PAS mettre de contrainte de cadence (libre)
+
+7. Sauvegarder le workout et le programmer pour le 07/02/2026
+
+
+✅ Toutes les valeurs de puissance incluent déjà le +15W pour le corps de séance
+✅ Cadence = LIBRE (pas de contrainte)
+✅ Récupération forcée à 175-180W

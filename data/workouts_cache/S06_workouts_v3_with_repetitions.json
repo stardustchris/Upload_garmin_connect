@@ -1,0 +1,692 @@
+{
+  "week": "S06",
+  "start_date": "02_02",
+  "end_date": "08_02",
+  "period": "02_02 au 08_02",
+  "workouts": [
+    {
+      "code": "C16",
+      "date": "2026-02-02",
+      "type": "Cyclisme",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "96à106",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "130à136",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "156à166",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "180à190",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "220à230",
+          "power_watts": "235à245",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "260à270",
+          "power_watts": "275à285",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:30",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "130à140",
+          "power_watts": "145à155",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 1/2"
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 2/2"
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n3"
+    },
+    {
+      "code": "C17",
+      "date": "2026-02-05",
+      "type": "Cyclisme",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "96à106",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "130à136",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "156à166",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "180à190",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "200à210",
+          "power_watts": "215à225",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70à75",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "230à240",
+          "power_watts": "245à255",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "90à95",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "260à270",
+          "power_watts": "275à285",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "130à140",
+          "power_watts": "145à155",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 1/2"
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 2/2"
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n4"
+    },
+    {
+      "code": "C18",
+      "date": "2026-02-07",
+      "type": "Cyclisme",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "96à106",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "130à136",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "156à166",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "180à190",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "90à95",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "220à230",
+          "power_watts": "235à245",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "220à230",
+          "power_watts": "235à245",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "220à230",
+          "power_watts": "235à245",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "03:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "240à250",
+          "power_watts": "255à265",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "280à290",
+          "power_watts": "295à305",
+          "power_adjustment_w": 15,
+          "position": "Position haute",
+          "is_sub_interval": true
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 1/2"
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 2/2"
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de la\nséance.\n5"
+    },
+    {
+      "code": "C19",
+      "date": "2026-02-08",
+      "type": "Cyclisme",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "96à106",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "130à136",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "156à166",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "180à190",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "220à230",
+          "power_watts": "235à245",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70à75",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "260à270",
+          "power_watts": "275à285",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "200à210",
+          "power_watts": "215à225",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "160à170",
+          "power_watts": "175à185",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "130à140",
+          "power_watts": "145à155",
+          "power_adjustment_w": 15
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 1/2"
+        },
+        {
+          "phase": "Récupération",
+          "duration": "2:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts_original": "standard HT",
+          "power_watts": "175à180",
+          "power_adjustment_w": "forced",
+          "forced_reason": "Récupération HT standard bloc 2/2"
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\nCourse à pied"
+    },
+    {
+      "code": "CAP16",
+      "date": "2026-02-03",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours vallonné (~ +/- 180 m de dénivelé) sur route ; aux sensations, en aisance mécanique – FARTLEK NATUREL ; sous\ncontrôle technique (pose du pied, cadence, proprioception…) + consommer ~ 500 mL d’eau au cours de la séance.\n6",
+      "workout_type": "FARTLEK",
+      "structured": false,
+      "description": "FARTLEK NATUREL - Séance libre aux sensations",
+      "intervals": []
+    },
+    {
+      "code": "CAP17",
+      "date": "2026-02-04",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "4:50"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "pace_parsed": {
+            "raw": "4:35à4:40",
+            "min_pace_sec_per_km": 275,
+            "max_pace_sec_per_km": 280,
+            "min_formatted": "4:35",
+            "max_formatted": "4:40"
+          },
+          "duration": "4:40"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "pace_parsed": {
+            "raw": "4:25à4:30",
+            "min_pace_sec_per_km": 265,
+            "max_pace_sec_per_km": 270,
+            "min_formatted": "4:25",
+            "max_formatted": "4:30"
+          },
+          "duration": "4:30"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP18",
+      "date": "2026-02-06",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "4:50"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP19",
+      "date": "2026-02-07",
+      "type": "Course à pied",
+      "duration_total": "1h00",
+      "notes": "Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "pace_parsed": {
+            "raw": "4:35à4:40",
+            "min_pace_sec_per_km": 275,
+            "max_pace_sec_per_km": 280,
+            "min_formatted": "4:35",
+            "max_formatted": "4:40"
+          },
+          "duration": "4:40"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "4:50"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "pace_parsed": {
+            "raw": "4:25à4:30",
+            "min_pace_sec_per_km": 265,
+            "max_pace_sec_per_km": 270,
+            "min_formatted": "4:25",
+            "max_formatted": "4:30"
+          },
+          "duration": "4:30"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "4:50"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:15à4:20",
+          "pace_parsed": {
+            "raw": "4:15à4:20",
+            "min_pace_sec_per_km": 255,
+            "max_pace_sec_per_km": 260,
+            "min_formatted": "4:15",
+            "max_formatted": "4:20"
+          },
+          "duration": "4:20"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "N5",
+      "date": "2026-02-04",
+      "type": "Natation",
+      "duration_total": null,
+      "series": [
+        {
+          "description": "3 x 100 3 N (CR, Brasse en battement de crawl, CR, Dos) (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "2x50-100-4x50-100) CR, respiration au CHOIX (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "3 x 100 3 N (CR, Brasse en battement de crawl, CR, Dos) (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull CR, respiration 3 tps, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 3 tps, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "25 m : CR & Dos récup.",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "1300 175 75 0 500 500 0 0 0 0",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "2500 m",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        }
+      ],
+      "distances": {},
+      "notes": null
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "week": "S06",
+  "start_date": "02_02",
+  "end_date": "08_02",
+  "period": "02_02 au 08_02",
+  "workouts": [
+    {
+      "code": "N5",
+      "date": "2026-02-04",
+      "type": "Natation",
+      "duration_total": "2500m",
+      "series": [
+        {
+          "description": "3 x 100 3 N (CR, Brasse en battement de crawl, CR, Dos) (r20)",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R45",
+          "technique": null
+        },
+        {
+          "description": "250 Pull CR, respiration 3 tps",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R30",
+          "technique": null
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R45",
+          "technique": null
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos)",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R45",
+          "technique": null
+        },
+        {
+          "description": "(100-2x50-100-4x50-100) CR, respiration au CHOIX (r20)",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R45",
+          "technique": null
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos)",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R60",
+          "technique": null
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 3 tps",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R30",
+          "technique": null
+        },
+        {
+          "description": "250 Pull CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "R15",
+          "technique": null
+        },
+        {
+          "description": "200, en alternant tous les 25 m : CR & Dos récup.",
+          "technique": null
+        }
+      ],
+      "distances": {}
+    },
+    {
+      "code": "C16",
+      "date": "2026-02-02",
+      "type": "Cyclisme",
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "05:00",
+          "cadence_rpm": "85à90",
+          "power_watts": "130à140"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "05:00",
+          "cadence_rpm": "85à90",
+          "power_watts": "160à170"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "power_watts": "200à210"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "power_watts": "240à250"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "power_watts": "220à230"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80à85",
+          "power_watts": "260à270"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:30",
+          "cadence_rpm": "80à85",
+          "power_watts": "130à140"
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:30",
+          "cadence_rpm": "85à90",
+          "power_watts": "100à110"
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n3\nS. PALAZZETTI - Consulting\nC17 (Jeudi 05/02, le matin)\n• Séance sur HT\n• Durée : 1h00\n• Répartition de la séance :\nDurée (min:ss) Cadence (rpm) Puissance (W)\n05:00 80 à 85 70 à 80\n05:00 85 à 90 100 à 110\nEchauffement\n05:00 85 à 90 130 à 140\n05:00 85 à 90 160 à 170\n3 x (04:00*-02:00-04:00**-02:00) :\n04:00* (Position haute) décomposées en :\n03:00 70 à 75 220 à 230\n01:00 90 à 95 260 à 270\n02:00 (Position aéro.) 80 à 85 160 à 170\nCorps de séance\n04:00** (Position haute) décomposées en :\n01:00 80 à 85 200 à 210\n02:00 70 à 75 230 à 240\n01:00 90 à 95 260 à 270\n02:00 (Position aéro.) 80 à 85 160 à 170\n02:00 80 à 85 130 à 140\nRécupération\n02:00 85 à 90 100 à 110\n• Consignes : Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n4"
+    },
+    {
+      "code": "CAP16",
+      "date": "2026-02-03",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Echauffement Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Echauffement",
+          "pace_min_per_km": "4:45à4:50",
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "duration": "10:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "duration": "05:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Récupération Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ],
+      "notes": "Parcours vallonné (~ +/- 180 m de dénivelé) sur route ; aux sensations, en aisance mécanique – FARTLEK NATUREL ; sous\ncontrôle technique (pose du pied, cadence, proprioception…) + consommer ~ 500 mL d’eau au cours de la séance.\n6\nS. PALAZZETTI - Consulting\nCAP17 (Mercredi 04/02, le matin)\n• Durée : 0h45 (+ inclure 0h05 de marche en accélération progressive au préalable)\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\nEchauffement Allure faible à modérée 20:00\n4:45 à 4:50 05:00\nCorps de séance 4:35 à 4:40 10:00\n4:25 à 4:30 05:00\nRécupération Allure modérée à faible 05:00\n• Indications : Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.\nCAP18 (Vendredi 06/02, le matin)\n• Durée : 0h45 (+ inclure 0h05 de marche en accélération progressive au préalable)\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\nEchauffement Allure faible à modérée 20:00\nCorps de séance 4:45 à 4:50 20:00\nRécupération Allure modérée à faible 05:00\n• Indications : Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.\nCAP19 (Samedi 07/02, le matin)\n• Durée : 1h00\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\n4:35 à 4:40 10:00\n4:45 à 4:50 05:00\nCorps de séance 4:25 à 4:30 15:00\n4:45 à 4:50 05:00\n4:15 à 4:20 20:00\nRécupération Allure modérée à faible 05:00\n• Indications : Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7"
+    },
+    {
+      "code": "CAP17",
+      "date": "2026-02-04",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Echauffement Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Echauffement",
+          "pace_min_per_km": "4:45à4:50",
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "duration": "10:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "duration": "05:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Récupération Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ],
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.\nCAP18 (Vendredi 06/02, le matin)\n• Durée : 0h45 (+ inclure 0h05 de marche en accélération progressive au préalable)\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\nEchauffement Allure faible à modérée 20:00\nCorps de séance 4:45 à 4:50 20:00\nRécupération Allure modérée à faible 05:00\n• Indications : Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.\nCAP19 (Samedi 07/02, le matin)\n• Durée : 1h00\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\n4:35 à 4:40 10:00\n4:45 à 4:50 05:00\nCorps de séance 4:25 à 4:30 15:00\n4:45 à 4:50 05:00\n4:15 à 4:20 20:00\nRécupération Allure modérée à faible 05:00\n• Indications : Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7"
+    },
+    {
+      "code": "CAP18",
+      "date": "2026-02-06",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Echauffement Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Récupération Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ],
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.\nCAP19 (Samedi 07/02, le matin)\n• Durée : 1h00\n• Répartition de la séance :\nIntensité (min:ss/km) Durée (min:ss)\n4:35 à 4:40 10:00\n4:45 à 4:50 05:00\nCorps de séance 4:25 à 4:30 15:00\n4:45 à 4:50 05:00\n4:15 à 4:20 20:00\nRécupération Allure modérée à faible 05:00\n• Indications : Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7"
+    },
+    {
+      "code": "CAP19",
+      "date": "2026-02-07",
+      "type": "Course à pied",
+      "duration_total": "1h00",
+      "intervals": [
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "duration": "15:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:15à4:20",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Récupération Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ],
+      "notes": "Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7"
+    }
+  ]
+}

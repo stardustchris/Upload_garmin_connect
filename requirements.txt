@@ -1,0 +1,21 @@
+# Garmin Connect API
+garminconnect>=0.2.20
+
+# PDF Processing
+pdfplumber>=0.11.0
+
+# Excel (format .xlsx moderne)
+openpyxl>=3.1.2
+
+# API Framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.20  # For file uploads
+
+# Utilities
+PyYAML>=6.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optionnel: Garmin Workouts pour upload YAML
+# Installation manuelle: pip install git+https://github.com/mkuthan/garmin-workouts.git

@@ -1,0 +1,9 @@
+steps:
+- cooldown:
+    duration: '2:00'
+    target:
+      power: 175-180W
+- cooldown:
+    duration: '2:00'
+    target:
+      power: 175-180W

@@ -1,0 +1,17 @@
+steps:
+- warmup:
+    duration: '2:30'
+    target:
+      power: 96-106W
+- warmup:
+    duration: '2:30'
+    target:
+      power: 130-136W
+- warmup:
+    duration: '5:00'
+    target:
+      power: 156-166W
+- warmup:
+    duration: '5:00'
+    target:
+      power: 180-190W
