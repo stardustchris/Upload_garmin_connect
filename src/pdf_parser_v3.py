@@ -553,10 +553,21 @@ class TriathlonPDFParserV3:
                             intervals.append(interval_copy)
 
                     # Ajouter les intervalles intermédiaires (entre cette répétition et la suivante)
+                    # OU intervalles finaux (après la dernière répétition)
                     if len(all_intervals_in_content) > expected_intervals_count:
                         intermediate_intervals = all_intervals_in_content[expected_intervals_count:]
+
+                        # Si c'est la dernière répétition, ce sont des intervalles finaux
+                        is_last_repetition = (rep_idx + 1 == len(all_repetitions))
+
                         for interval in intermediate_intervals:
-                            interval["between_repetitions"] = f"Between Block {rep_idx + 1} and {rep_idx + 2}"
+                            if is_last_repetition:
+                                # Intervalles après toutes les répétitions = intervalles normaux
+                                # Ne pas ajouter de metadata "between_repetitions"
+                                pass
+                            else:
+                                # Intervalles entre deux répétitions
+                                interval["between_repetitions"] = f"Between Block {rep_idx + 1} and {rep_idx + 2}"
                             intervals.append(interval)
 
                     current_pos = repeat_content_end
@@ -866,6 +877,26 @@ class TriathlonPDFParserV3:
 
                     i += 1
                 continue
+
+            # Strip section labels from line if present
+            # Ex: "Corps de séance 01:00 (Position haute) 90 à 95 220 à 230"
+            # → Strip "Corps de séance" prefix but keep the interval data
+            line_stripped = line.strip()
+
+            # Strip section label prefixes (but keep the rest of the line to parse)
+            for prefix in ['Corps de séance', 'Échauffement', 'Récupération']:
+                if line_stripped.startswith(prefix):
+                    line_stripped = line_stripped[len(prefix):].strip()
+                    break
+
+            # Skip lines that are ONLY position markers (no interval data)
+            # Ex: "Position haute" alone on a line (not "01:00 (Position haute) ...")
+            if line_stripped.startswith(('Position haute', 'Position aéro')) and not any(c.isdigit() for c in line_stripped[:15]):
+                i += 1
+                continue
+
+            # Update line to the stripped version for pattern matching
+            line = line_stripped
 
             # Parser intervalle simple (pas décomposé)
             # Format 1: Avec position: "01:00 (Position haute) 80 à 85 200 à 210"
