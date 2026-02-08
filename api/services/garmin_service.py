@@ -59,20 +59,23 @@ class GarminService:
             # Approche 1 : Essayer de charger session garth existante
             if GARTH_DIR.exists():
                 try:
-                    import garth
-                    garth.resume(str(GARTH_DIR))
-                    garth.client.username = self.email
+                    # Créer client Garmin et charger la session depuis ~/.garth
                     self.client = Garmin()
-                    self.client.login()
+                    self.client.login(str(GARTH_DIR))
                     self._is_authenticated = True
                     logger.info("✅ Connexion Garmin réussie (session garth)")
                     return True
                 except Exception as e:
                     logger.warning(f"Session garth invalide: {e}, tentative connexion directe...")
 
-            # Approche 2 : Connexion directe (peut nécessiter MFA manuel)
+            # Approche 2 : Connexion directe avec credentials (peut nécessiter MFA manuel)
             self.client = Garmin(self.email, self.password)
             self.client.login()
+
+            # Sauvegarder la session pour utilisation future
+            if not GARTH_DIR.exists():
+                GARTH_DIR.mkdir(parents=True, exist_ok=True)
+            self.client.garth.dump(str(GARTH_DIR))
 
             self._is_authenticated = True
             logger.info("✅ Connexion Garmin réussie")

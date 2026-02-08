@@ -110,7 +110,7 @@ def create_cycling_step(step_order: int, interval: Dict) -> Dict[str, Any]:
         },
         "endConditionValue": float(duration_seconds),
         "targetType": {
-            "workoutTargetTypeId": 5,  # POWER
+            "workoutTargetTypeId": 2,  # POWER (2, not 5 which is SPEED!)
             "workoutTargetTypeKey": "power.zone"
         },
         "targetValueOne": float(target_power_low),  # Min power
