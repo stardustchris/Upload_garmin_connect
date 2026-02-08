@@ -178,12 +178,15 @@ class GarminService:
             date = datetime.now().strftime('%Y-%m-%d')
 
         try:
-            # get_body_composition retourne les données de composition corporelle
-            weight_data = self.client.get_body_composition(date)
+            # get_daily_weigh_ins retourne les pesées du jour
+            weight_data = self.client.get_daily_weigh_ins(date)
 
-            if weight_data and 'weight' in weight_data:
-                weight_kg = weight_data['weight'] / 1000  # Garmin retourne en grammes
-                logger.info(f"✅ Poids récupéré: {weight_kg} kg pour {date}")
+            if weight_data and 'dateWeightList' in weight_data and len(weight_data['dateWeightList']) > 0:
+                # Prendre la dernière pesée du jour
+                latest = weight_data['dateWeightList'][-1]
+                weight_g = latest.get('weight', 0)
+                weight_kg = weight_g / 1000.0  # Garmin retourne en grammes
+                logger.info(f"✅ Poids récupéré: {weight_kg:.1f} kg pour {date}")
                 return weight_kg
 
             return None
@@ -211,20 +214,25 @@ class GarminService:
         try:
             sleep_data = self.client.get_sleep_data(date)
 
-            if sleep_data:
-                # Extraire durée et qualité
-                duration_seconds = sleep_data.get('sleepTimeSeconds', 0)
-                duration_hours = duration_seconds / 3600
+            if sleep_data and 'dailySleepDTO' in sleep_data:
+                daily = sleep_data['dailySleepDTO']
 
-                quality_score = sleep_data.get('sleepScores', {}).get('overall', {}).get('value', 0)
+                # Extraire durée et qualité
+                duration_seconds = daily.get('sleepTimeSeconds', 0)
+                duration_hours = duration_seconds / 3600.0
+
+                # Score de qualité depuis sleepScores si disponible
+                quality_score = 0
+                if 'sleepScores' in sleep_data:
+                    quality_score = sleep_data['sleepScores'].get('overall', {}).get('value', 0)
 
                 return {
                     "date": date,
                     "duration_hours": round(duration_hours, 1),
                     "quality_score": quality_score,
-                    "deep_sleep_seconds": sleep_data.get('deepSleepSeconds', 0),
-                    "light_sleep_seconds": sleep_data.get('lightSleepSeconds', 0),
-                    "rem_sleep_seconds": sleep_data.get('remSleepSeconds', 0)
+                    "deep_sleep_seconds": daily.get('deepSleepSeconds', 0),
+                    "light_sleep_seconds": daily.get('lightSleepSeconds', 0),
+                    "rem_sleep_seconds": daily.get('remSleepSeconds', 0)
                 }
 
             return None
@@ -251,12 +259,21 @@ class GarminService:
 
         try:
             # Convertir JSON → format Garmin
-            from src.garmin_workout_converter import convert_to_garmin_cycling_workout
+            from src.garmin_workout_converter import (
+                convert_to_garmin_cycling_workout,
+                convert_to_garmin_running_workout
+            )
 
             workout_type = workout_json.get('type', '').lower()
 
             if 'cyclisme' in workout_type or 'cycling' in workout_type:
                 garmin_workout = convert_to_garmin_cycling_workout(workout_json)
+                logger.info(f"📤 Upload workout {workout_json['code']} vers Garmin...")
+                result = self.client.upload_workout(garmin_workout)
+                logger.info(f"✅ Workout uploadé: ID {result.get('workoutId', 'unknown')}")
+                return result
+            elif 'course à pied' in workout_type or 'running' in workout_type:
+                garmin_workout = convert_to_garmin_running_workout(workout_json)
                 logger.info(f"📤 Upload workout {workout_json['code']} vers Garmin...")
                 result = self.client.upload_workout(garmin_workout)
                 logger.info(f"✅ Workout uploadé: ID {result.get('workoutId', 'unknown')}")

@@ -1,0 +1,1177 @@
+{
+  "week": "S06",
+  "start_date": "02_02",
+  "end_date": "08_02",
+  "period": "02_02 au 08_02",
+  "workouts": [
+    {
+      "code": "N5",
+      "date": "2026-02-04",
+      "type": "Natation",
+      "duration_total": null,
+      "series": [
+        {
+          "description": "3 x 100 3 N (CR, Brasse en battement de crawl, CR, Dos) (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "2x50-100-4x50-100) CR, respiration au CHOIX (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "3 x 100 3 N (CR, Brasse en battement de crawl, CR, Dos) (r20), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull CR, respiration 3 tps, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "200 3 N (CR, Brasse en battement de crawl, CR, Dos), TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull+Plaq. CR, respiration 3 tps, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "250 Pull CR, respiration 2 tps, en alternant le sens respiratoire tous les 50 m, TECHNIQUEMENT APPLIQUE",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "25 m : CR & Dos récup.",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "1300 175 75 0 500 500 0 0 0 0",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "2500 m",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        },
+        {
+          "description": "2\n\nS. PALAZZETTI - Consulting",
+          "technique": "TECHNIQUEMENT APPLIQUE"
+        }
+      ],
+      "distances": {},
+      "notes": null
+    },
+    {
+      "code": "C16",
+      "type": "Cyclisme",
+      "date": "2026-02-02",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "96à106",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "130à136",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "156à166",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "180à190",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00*",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position aéro."
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00** décomposées en :",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "240 à 250",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00** décomposées en :",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "240 à 250",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00***",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position aéro."
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:30",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "130 à 140",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:30",
+          "cadence_rpm": "85 à 90",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "100 à 110",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n3"
+    },
+    {
+      "code": "C17",
+      "type": "Cyclisme",
+      "date": "2026-02-05",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "96à106",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "130à136",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "156à166",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "180à190",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "03:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "03:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "03:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00** décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "230 à 240",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": ""
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "130 à 140",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:00",
+          "cadence_rpm": "85 à 90",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "100 à 110",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\n4"
+    },
+    {
+      "code": "C18",
+      "type": "Cyclisme",
+      "date": "2026-02-07",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "96à106",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "130à136",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "156à166",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "180à190",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "240 à 250",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "03:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "280 à 290",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position aéro."
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 1,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00* décomposées en :",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "",
+          "repetition_iteration": 2,
+          "repetition_total": 2
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": ""
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "240 à 250",
+          "position": "Position aéro."
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "08:00*** décomposées en :",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "280 à 290",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "04:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": ""
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de la\nséance.\n5"
+    },
+    {
+      "code": "C19",
+      "type": "Cyclisme",
+      "date": "2026-02-08",
+      "indoor": true,
+      "duration_total": "1h00",
+      "description": "sur HT",
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "96à106",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 1/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "2:30",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "130à136",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 2/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "156à166",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 3/4"
+        },
+        {
+          "phase": "Echauffement",
+          "duration": "5:00",
+          "cadence_rpm": "libre",
+          "cadence_upload_to_garmin": false,
+          "power_watts": "180à190",
+          "power_adjustment_w": "+15W (HT)",
+          "forced_reason": "Échauffement HT standard bloc 4/4"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 3
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "90 à 95",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute"
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 1,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 2,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 3,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "220 à 230",
+          "position": "Position haute",
+          "repetition_iteration": 4,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "02:00",
+          "cadence_rpm": "70 à 75",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "260 à 270",
+          "position": "Position haute",
+          "repetition_iteration": 4,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "200 à 210",
+          "position": "Position haute",
+          "repetition_iteration": 4,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Corps de séance",
+          "duration": "01:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "160 à 170",
+          "position": "Position haute",
+          "repetition_iteration": 4,
+          "repetition_total": 4
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:00",
+          "cadence_rpm": "80 à 85",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "130 à 140",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        },
+        {
+          "phase": "Récupération",
+          "duration": "02:00",
+          "cadence_rpm": "85 à 90",
+          "cadence_upload_to_garmin": true,
+          "power_watts": "100 à 110",
+          "power_adjustment_w": "+15W (HT)",
+          "position": ""
+        }
+      ],
+      "notes": "Adapter le développement en fonction des zones cadences et de puissances imposées ; consommer 850 mL d’eau au cours de\nla séance.\nCourse à pied\nCAP16 (Mardi 03/02, le matin)\n• Durée : 0h45 (+ inclure 0h05 de marche en accélération progressive au préalable)\n• Indications : Parcours vallonné (~ +/- 180 m de dénivelé) sur route ; aux sensations, en aisance mécanique – FARTLEK NATUREL ; sous\ncontrôle technique (pose du pied, cadence, proprioception…) + consommer ~ 500 mL d’eau au cours de la séance.\n6"
+    },
+    {
+      "code": "CAP16",
+      "date": "2026-02-03",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours vallonné (~ +/- 180 m de dénivelé) sur route ; aux sensations, en aisance mécanique – FARTLEK NATUREL ; sous\ncontrôle technique (pose du pied, cadence, proprioception…) + consommer ~ 500 mL d’eau au cours de la séance.\n6",
+      "workout_type": "FARTLEK",
+      "structured": false,
+      "description": "FARTLEK NATUREL - Séance libre aux sensations",
+      "intervals": []
+    },
+    {
+      "code": "CAP17",
+      "date": "2026-02-04",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "pace_parsed": {
+            "raw": "4:35à4:40",
+            "min_pace_sec_per_km": 275,
+            "max_pace_sec_per_km": 280,
+            "min_formatted": "4:35",
+            "max_formatted": "4:40"
+          },
+          "duration": "10:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "pace_parsed": {
+            "raw": "4:25à4:30",
+            "min_pace_sec_per_km": 265,
+            "max_pace_sec_per_km": 270,
+            "min_formatted": "4:25",
+            "max_formatted": "4:30"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP18",
+      "date": "2026-02-06",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "20:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP19",
+      "date": "2026-02-07",
+      "type": "Course à pied",
+      "duration_total": "1h00",
+      "notes": "Enchaînement post-C18 ; parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied,\ncadence, proprioception…) + consommer 1 gel énergétique à la TRANSITION C18-CAP19 et après 0h30 de course + ~ 600 mL d’eau au\ncours de la séance.\n7",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "pace_parsed": {
+            "raw": "4:35à4:40",
+            "min_pace_sec_per_km": 275,
+            "max_pace_sec_per_km": 280,
+            "min_formatted": "4:35",
+            "max_formatted": "4:40"
+          },
+          "duration": "10:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:25à4:30",
+          "pace_parsed": {
+            "raw": "4:25à4:30",
+            "min_pace_sec_per_km": 265,
+            "max_pace_sec_per_km": 270,
+            "min_formatted": "4:25",
+            "max_formatted": "4:30"
+          },
+          "duration": "15:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:15à4:20",
+          "pace_parsed": {
+            "raw": "4:15à4:20",
+            "min_pace_sec_per_km": 255,
+            "max_pace_sec_per_km": 260,
+            "min_formatted": "4:15",
+            "max_formatted": "4:20"
+          },
+          "duration": "20:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    }
+  ]
+}
