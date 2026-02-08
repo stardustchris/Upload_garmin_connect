@@ -9,6 +9,91 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 
+def detect_repeat_groups(intervals: List[Dict]) -> List[Dict]:
+    """
+    Analyse les intervalles et groupe les répétitions consécutives
+
+    Args:
+        intervals: Liste des intervalles parsés
+
+    Returns:
+        Liste de groupes où chaque groupe est soit:
+        - {"type": "single", "interval": {...}}
+        - {"type": "repeat", "iterations": N, "steps": [...]}
+    """
+    groups = []
+    i = 0
+
+    while i < len(intervals):
+        interval = intervals[i]
+
+        # Vérifier si cet intervalle fait partie d'un groupe de répétition
+        if "repetition_total" in interval and "repetition_iteration" in interval:
+            # Début d'un groupe de répétition
+            repeat_total = interval["repetition_total"]
+
+            # Collecter tous les intervalles de ce groupe (toutes les itérations)
+            group_intervals = []
+
+            # Tant qu'on trouve des intervalles avec repetition_total et même total
+            while (i < len(intervals) and
+                   intervals[i].get("repetition_total") == repeat_total and
+                   intervals[i].get("repetition_iteration") is not None):
+                group_intervals.append(intervals[i])
+                i += 1
+
+            # Extraire le pattern (première itération seulement)
+            steps_per_iteration = len(group_intervals) // repeat_total
+            pattern_steps = group_intervals[:steps_per_iteration]
+
+            groups.append({
+                "type": "repeat",
+                "iterations": repeat_total,
+                "steps": pattern_steps
+            })
+        else:
+            # Intervalle simple
+            groups.append({
+                "type": "single",
+                "interval": interval
+            })
+            i += 1
+
+    return groups
+
+
+def create_repeat_group_step(
+    step_order: int,
+    child_step_id: int,
+    iterations: int,
+    nested_steps: List[Dict]
+) -> Dict[str, Any]:
+    """
+    Crée un RepeatGroupDTO pour Garmin workout
+
+    Args:
+        step_order: Ordre du step dans le workout
+        child_step_id: ID du child step pour les steps imbriqués
+        iterations: Nombre de répétitions (numberOfIterations)
+        nested_steps: Liste des ExecutableStepDTOs à répéter
+
+    Returns:
+        Structure RepeatGroupDTO
+    """
+    return {
+        "type": "RepeatGroupDTO",
+        "stepOrder": step_order,
+        "stepType": {
+            "stepTypeId": 6,  # REPEAT type
+            "stepTypeKey": "repeat"
+        },
+        "childStepId": child_step_id,
+        "numberOfIterations": iterations,
+        "smartRepeat": False,
+        "workoutSteps": nested_steps
+    }
+
+
 def convert_to_garmin_cycling_workout(workout_json: Dict) -> Dict[str, Any]:
     """
     Convertit un workout JSON en format Garmin CyclingWorkout
@@ -26,15 +111,50 @@ def convert_to_garmin_cycling_workout(workout_json: Dict) -> Dict[str, Any]:
         for interval in workout_json['intervals']
     )
 
-    # Créer les workout steps
+    # Détecter les groupes de répétition
+    repeat_groups = detect_repeat_groups(workout_json['intervals'])
+
+    # Créer les workout steps avec support RepeatGroups
     workout_steps = []
-    for idx, interval in enumerate(workout_json['intervals']):
-        step = create_cycling_step(idx + 1, interval)
-        workout_steps.append(step)
+    step_order = 0
+    child_step_id = 0
+
+    for group in repeat_groups:
+        if group["type"] == "single":
+            # Step simple
+            step_order += 1
+            step = create_cycling_step(step_order, group["interval"])
+            workout_steps.append(step)
+
+        elif group["type"] == "repeat":
+            # Groupe de répétition
+            child_step_id += 1
+
+            # Créer les steps imbriqués
+            nested_steps = []
+            nested_step_order = step_order
+
+            for interval in group["steps"]:
+                nested_step_order += 1
+                nested_step = create_cycling_step(nested_step_order, interval)
+                nested_step["childStepId"] = child_step_id
+                nested_steps.append(nested_step)
+
+            # Mettre à jour step_order
+            step_order = nested_step_order
+
+            # Créer le RepeatGroupDTO
+            repeat_step = create_repeat_group_step(
+                step_order=step_order,
+                child_step_id=child_step_id,
+                iterations=group["iterations"],
+                nested_steps=nested_steps
+            )
+            workout_steps.append(repeat_step)
 
     # Structure Garmin Workout
     garmin_workout = {
-        "workoutName": f"{workout_json['code']} - {workout_json.get('description', '')}",
+        "workoutName": workout_json['code'],  # Just the code (e.g., "C16", not "C16 - sur HT")
         "estimatedDurationInSecs": total_seconds,
         "sportType": {
             "sportTypeId": 2,
