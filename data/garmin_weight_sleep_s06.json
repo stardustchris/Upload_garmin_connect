@@ -1,0 +1,93 @@
+[
+  {
+    "date": "2026-02-02",
+    "day_name": "Monday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-02",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-03",
+    "day_name": "Tuesday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-03",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-04",
+    "day_name": "Wednesday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-04",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-05",
+    "day_name": "Thursday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-05",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-06",
+    "day_name": "Friday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-06",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-07",
+    "day_name": "Saturday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-07",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  },
+  {
+    "date": "2026-02-08",
+    "day_name": "Sunday",
+    "weight_kg": null,
+    "sleep": {
+      "date": "2026-02-08",
+      "duration_hours": 0.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 0,
+      "light_sleep_seconds": 0,
+      "rem_sleep_seconds": 0
+    }
+  }
+]

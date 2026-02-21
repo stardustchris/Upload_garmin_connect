@@ -1,0 +1,93 @@
+# Configuration Clawdbot pour Garmin Automation
+# À intégrer dans la config Clawdbot principale
+
+# Connexion Google Drive
+google_drive:
+  folder_id: "1pl25O92YdeAP_v1NBVGlzwCfPtuLKg4P"
+  credentials_path: "~/.config/clawdbot/google_credentials.json"
+
+# Règles de traitement email
+email_rules:
+  - name: "Entraînements Stéphane Palazzetti"
+    sender: "stephane.palazzetti@*"  # À remplacer par l'email exact
+
+    attachments:
+      - pattern: "Séances S*.pdf"
+        action:
+          type: "save_and_execute"
+          destination: "google_drive"  # Sauvegarder sur Drive
+          script: "~/Documents/Triathlon/garmin_automation/scripts/clawdbot_workflow.py"
+          args:
+            - "--action"
+            - "upload_workouts"
+            - "--file"
+            - "{attachment_path}"
+          notification:
+            title: "✅ Entraînements uploadés"
+            message: "Semaine {week} uploadée sur Garmin Connect"
+
+      - pattern: "S*_carnet*.xls"
+        action:
+          type: "save_only"
+          destination: "google_drive"
+          notification:
+            title: "📊 Carnet Excel reçu"
+            message: "Prêt pour remplissage dimanche 22h"
+
+# Tâches planifiées (cron-like)
+scheduled_tasks:
+  - name: "Remplissage carnet hebdomadaire"
+    schedule: "0 22 * * 0"  # Dimanche 22:00
+    action:
+      type: "execute_script"
+      script: "~/Documents/Triathlon/garmin_automation/scripts/clawdbot_workflow.py"
+      args:
+        - "--action"
+        - "fill_excel"
+        - "--file"
+        - "{latest_xls_from_drive}"  # Récupère le dernier XLS
+      notification:
+        title: "📊 Carnet rempli"
+        message: "Prêt pour relecture sur Google Drive"
+
+      on_success:
+        # Uploader le XLSX rempli sur Drive (remplace le XLS)
+        upload_to_drive: true
+        drive_folder_id: "1pl25O92YdeAP_v1NBVGlzwCfPtuLKg4P"
+
+# Commandes manuelles
+manual_commands:
+  - name: "prepare_email"
+    trigger: "!prepare-email S07"  # Commande Clawdbot
+    description: "Prépare l'email pour Stéphane avec le carnet rempli"
+    action:
+      type: "execute_script"
+      script: "~/Documents/Triathlon/garmin_automation/scripts/clawdbot_workflow.py"
+      args:
+        - "--action"
+        - "prepare_email"
+        - "--file"
+        - "{week}_carnet_entrainement.xlsx"
+      notification:
+        title: "📧 Email préparé"
+        message: "Brouillon prêt - Relis et envoie manuellement"
+
+# Notifications
+notifications:
+  channels:
+    - type: "macos"  # Notifications macOS
+      enabled: true
+    - type: "telegram"  # Optionnel
+      enabled: false
+      bot_token: "YOUR_BOT_TOKEN"
+      chat_id: "YOUR_CHAT_ID"
+    - type: "email"  # Optionnel
+      enabled: false
+      recipient: "your_email@example.com"
+
+# Logs
+logging:
+  level: "INFO"
+  file: "~/Documents/Triathlon/garmin_automation/logs/clawdbot_automation.log"
+  max_size: "10MB"
+  backup_count: 5

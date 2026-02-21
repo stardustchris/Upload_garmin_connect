@@ -1,0 +1,86 @@
+[
+  {
+    "date": "2026-02-02",
+    "day_name": "Monday",
+    "weight_kg": 70.959,
+    "sleep": {
+      "date": "2026-02-02",
+      "duration_hours": 6.3,
+      "quality_score": 0,
+      "deep_sleep_seconds": 4080,
+      "light_sleep_seconds": 14100,
+      "rem_sleep_seconds": 4560
+    }
+  },
+  {
+    "date": "2026-02-03",
+    "day_name": "Tuesday",
+    "weight_kg": 71.599,
+    "sleep": {
+      "date": "2026-02-03",
+      "duration_hours": 5.9,
+      "quality_score": 0,
+      "deep_sleep_seconds": 2820,
+      "light_sleep_seconds": 15780,
+      "rem_sleep_seconds": 2640
+    }
+  },
+  {
+    "date": "2026-02-04",
+    "day_name": "Wednesday",
+    "weight_kg": 72.339,
+    "sleep": {
+      "date": "2026-02-04",
+      "duration_hours": 6.0,
+      "quality_score": 0,
+      "deep_sleep_seconds": 3240,
+      "light_sleep_seconds": 15240,
+      "rem_sleep_seconds": 3180
+    }
+  },
+  {
+    "date": "2026-02-05",
+    "day_name": "Thursday",
+    "weight_kg": 71.73,
+    "sleep": null
+  },
+  {
+    "date": "2026-02-06",
+    "day_name": "Friday",
+    "weight_kg": 72.29,
+    "sleep": {
+      "date": "2026-02-06",
+      "duration_hours": 7.2,
+      "quality_score": 0,
+      "deep_sleep_seconds": 2580,
+      "light_sleep_seconds": 17340,
+      "rem_sleep_seconds": 5820
+    }
+  },
+  {
+    "date": "2026-02-07",
+    "day_name": "Saturday",
+    "weight_kg": 71.839,
+    "sleep": {
+      "date": "2026-02-07",
+      "duration_hours": 6.8,
+      "quality_score": 0,
+      "deep_sleep_seconds": 3960,
+      "light_sleep_seconds": 16500,
+      "rem_sleep_seconds": 4020
+    }
+  },
+  {
+    "date": "2026-02-08",
+    "day_name": "Sunday",
+    "weight_kg": 71.83,
+    "sleep": {
+      "date": "2026-02-08",
+      "duration_hours": 9.9,
+      "quality_score": 0,
+      "deep_sleep_seconds": 3840,
+      "light_sleep_seconds": 23340,
+      "rem_sleep_seconds": 8520
+    }
+  }
+]

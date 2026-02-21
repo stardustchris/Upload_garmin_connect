@@ -1,0 +1,202 @@
+{
+  "week": "S07",
+  "start_date": "09_02",
+  "end_date": "15_02",
+  "period": "09_02 au 15_02",
+  "workouts": [
+    {
+      "code": "CAP20",
+      "date": "2026-02-11",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "5:00à5:05",
+          "pace_parsed": {
+            "raw": "5:00à5:05",
+            "min_pace_sec_per_km": 300,
+            "max_pace_sec_per_km": 305,
+            "min_formatted": "5:00",
+            "max_formatted": "5:05"
+          },
+          "duration": "15:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "10:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP21",
+      "date": "2026-02-12",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 500 mL d’eau au cours de la séance.",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "5:00à5:05",
+          "pace_parsed": {
+            "raw": "5:00à5:05",
+            "min_pace_sec_per_km": 300,
+            "max_pace_sec_per_km": 305,
+            "min_formatted": "5:00",
+            "max_formatted": "5:05"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "5:00à5:05",
+          "pace_parsed": {
+            "raw": "5:00à5:05",
+            "min_pace_sec_per_km": 300,
+            "max_pace_sec_per_km": 305,
+            "min_formatted": "5:00",
+            "max_formatted": "5:05"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:30à4:35",
+          "pace_parsed": {
+            "raw": "4:30à4:35",
+            "min_pace_sec_per_km": 270,
+            "max_pace_sec_per_km": 275,
+            "min_formatted": "4:30",
+            "max_formatted": "4:35"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    },
+    {
+      "code": "CAP22",
+      "date": "2026-02-14",
+      "type": "Course à pied",
+      "duration_total": "0h45",
+      "notes": "Parcours peu accidenté (~ +/- 80 m de dénivelé) sur route ; aux sensations, en aisance respiratoire et mécanique ; sous\ncontrôle technique (pose du pied, cadence, proprioception…) + consommer ~ 500 mL d’eau au cours de la séance.\n2",
+      "workout_type": "FARTLEK",
+      "structured": false,
+      "description": "FARTLEK NATUREL - Séance libre aux sensations",
+      "intervals": []
+    },
+    {
+      "code": "CAP23",
+      "date": "2026-02-15",
+      "type": "Course à pied",
+      "duration_total": "1h00",
+      "notes": "Parcours peu accidenté (~ +/- 120 m de dénivelé) sur route ; sous contrôle technique (pose du pied, cadence, proprioception…)\n+ consommer ~ 600 mL d’eau au cours de la séance.\n3",
+      "workout_type": "STRUCTURED",
+      "structured": true,
+      "intervals": [
+        {
+          "phase": "Echauffement",
+          "pace_description": "Allure faible à modérée",
+          "duration": "20:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "5:00à5:05",
+          "pace_parsed": {
+            "raw": "5:00à5:05",
+            "min_pace_sec_per_km": 300,
+            "max_pace_sec_per_km": 305,
+            "min_formatted": "5:00",
+            "max_formatted": "5:05"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:35à4:40",
+          "pace_parsed": {
+            "raw": "4:35à4:40",
+            "min_pace_sec_per_km": 275,
+            "max_pace_sec_per_km": 280,
+            "min_formatted": "4:35",
+            "max_formatted": "4:40"
+          },
+          "duration": "15:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "5:00à5:05",
+          "pace_parsed": {
+            "raw": "5:00à5:05",
+            "min_pace_sec_per_km": 300,
+            "max_pace_sec_per_km": 305,
+            "min_formatted": "5:00",
+            "max_formatted": "5:05"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Corps de séance",
+          "pace_min_per_km": "4:45à4:50",
+          "pace_parsed": {
+            "raw": "4:45à4:50",
+            "min_pace_sec_per_km": 285,
+            "max_pace_sec_per_km": 290,
+            "min_formatted": "4:45",
+            "max_formatted": "4:50"
+          },
+          "duration": "05:00"
+        },
+        {
+          "phase": "Récupération",
+          "pace_description": "Allure modérée à faible",
+          "duration": "05:00"
+        }
+      ]
+    }
+  ]
+}
