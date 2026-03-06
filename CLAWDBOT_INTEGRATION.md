@@ -156,6 +156,7 @@ cat config/clawdbot_config.yaml >> ~/.clawdbot/config.yaml
 ```bash
 # Clawdbot commandes
 
+!parse-workouts /path/to/S07.pdf  # Parse PDF -> JSON via conteneur Docker
 !prepare-email S07              # Prépare email pour semaine S07
 !status                         # État de l'automation
 !retry-upload S07               # Réessaye upload si échec

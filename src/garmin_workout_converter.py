@@ -7,6 +7,7 @@ Convertit les workouts parsés (JSON) en format CyclingWorkout pour upload
 
 from typing import Dict, List, Any
 from datetime import datetime
+import re
 
 
 def detect_repeat_groups(intervals: List[Dict]) -> List[Dict]:
@@ -207,14 +208,16 @@ def create_cycling_step(step_order: int, interval: Dict) -> Dict[str, Any]:
         step_type_key = "interval"
 
     # Parser puissance (format "XXXàYYY")
-    power_str = interval['power_watts']
-    if 'à' in power_str:
-        power_parts = power_str.split('à')
-        target_power_low = int(power_parts[0])
-        target_power_high = int(power_parts[1])
+    power_str = str(interval['power_watts'])
+    power_values = [int(v) for v in re.findall(r'\d+', power_str)]
+    if len(power_values) >= 2:
+        target_power_low = power_values[0]
+        target_power_high = power_values[1]
+    elif len(power_values) == 1:
+        target_power_low = power_values[0]
+        target_power_high = power_values[0]
     else:
-        target_power_low = int(power_str)
-        target_power_high = int(power_str)
+        raise ValueError(f"Invalid power range: {power_str!r}")
 
     # Créer ExecutableStep
     step = {
@@ -262,12 +265,19 @@ def parse_duration_to_seconds(duration_str: str) -> int:
     Returns:
         Secondes (int)
     """
-    if ':' in duration_str:
-        parts = duration_str.split(':')
-        return int(parts[0]) * 60 + int(parts[1])
-    else:
-        # Si pas de ":", assumer que c'est en minutes
-        return int(duration_str) * 60
+    if duration_str is None:
+        raise ValueError("Duration is None")
+
+    raw = str(duration_str).strip()
+
+    mmss = re.search(r'(\d{1,2}):(\d{2})', raw)
+    if mmss:
+        return int(mmss.group(1)) * 60 + int(mmss.group(2))
+
+    if re.fullmatch(r'\d+', raw):
+        return int(raw) * 60
+
+    raise ValueError(f"Unsupported duration format: {duration_str!r}")
 
 
 def convert_to_garmin_running_workout(workout_json: Dict) -> Dict[str, Any]:

@@ -36,9 +36,6 @@ class GarminService:
         self.email = email or os.getenv('GARMIN_EMAIL')
         self.password = password or os.getenv('GARMIN_PASSWORD')
 
-        if not self.email or not self.password:
-            raise ValueError("Credentials Garmin manquants. Définir GARMIN_EMAIL et GARMIN_PASSWORD dans .env")
-
         self.client: Optional[Garmin] = None
         self._is_authenticated = False
 
@@ -69,6 +66,11 @@ class GarminService:
                     logger.warning(f"Session garth invalide: {e}, tentative connexion directe...")
 
             # Approche 2 : Connexion directe avec credentials (peut nécessiter MFA manuel)
+            if not self.email or not self.password:
+                raise ValueError(
+                    "Credentials Garmin manquants et aucune session ~/.garth valide. "
+                    "Définir GARMIN_EMAIL et GARMIN_PASSWORD dans .env, puis relancer."
+                )
             self.client = Garmin(self.email, self.password)
             self.client.login()
 

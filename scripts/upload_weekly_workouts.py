@@ -3,7 +3,7 @@
 Script pour uploader automatiquement toutes les séances d'une semaine vers Garmin Connect
 
 Usage:
-    python scripts/upload_weekly_workouts.py <pdf_path>
+    python scripts/upload_weekly_workouts.py <pdf_path> [--dry-run]
 
 Exemple:
     python scripts/upload_weekly_workouts.py "/Users/aptsdae/Documents/Triathlon/Séances S07 (09_02 au 15_02)_Delalain C_2026.pdf"
@@ -11,6 +11,7 @@ Exemple:
 
 import sys
 import json
+import argparse
 from pathlib import Path
 
 # Ajouter le répertoire parent au path
@@ -19,9 +20,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.pdf_parser_v3 import TriathlonPDFParserV3
 from api.services.garmin_service import GarminService
 from src.garmin_workout_converter import convert_to_garmin_cycling_workout, convert_to_garmin_running_workout
+from src.workout_validation import validate_workout_for_upload
 
 
-def upload_weekly_workouts(pdf_path: str):
+def upload_weekly_workouts(pdf_path: str, dry_run: bool = False):
     """
     Parse et upload toutes les séances d'une semaine
 
@@ -53,14 +55,18 @@ def upload_weekly_workouts(pdf_path: str):
     print(f"🏃 Course à pied: {len(running)} séances")
     print(f"🏊 Natation: {len(swimming)} séances")
 
-    # Connexion à Garmin
-    print(f"\n🔐 Connexion à Garmin Connect...")
-    garmin = GarminService()
-    garmin.connect()
-    print("✅ Connecté\n")
+    garmin = None
+    if dry_run:
+        print("\n🧪 Mode DRY-RUN: conversion locale uniquement (aucun upload Garmin)\n")
+    else:
+        # Connexion à Garmin
+        print(f"\n🔐 Connexion à Garmin Connect...")
+        garmin = GarminService()
+        garmin.connect()
+        print("✅ Connecté\n")
 
     print("="*80)
-    print("📤 UPLOAD DES SÉANCES")
+    print("📤 TRAITEMENT DES SÉANCES")
     print("="*80)
 
     uploaded = []
@@ -86,12 +92,26 @@ def upload_weekly_workouts(pdf_path: str):
         print(f"   - Durée: {workout.get('duration_total')}")
         print(f"   - {len(workout['intervals'])} intervalles")
 
-        try:
-            garmin_workout = convert_to_garmin_cycling_workout(workout)
-            result_upload = garmin.client.upload_workout(garmin_workout)
-            workout_id = result_upload.get('workoutId', 'unknown')
+        validation_errors = validate_workout_for_upload(workout)
+        if validation_errors:
+            for err in validation_errors:
+                print(f"   ❌ Validation: {err}")
+            errors.append({
+                'code': code,
+                'date': workout.get('date'),
+                'error': '; '.join(validation_errors)
+            })
+            continue
 
-            print(f"   ✅ Uploadé - ID: {workout_id}")
+        try:
+            if dry_run:
+                convert_to_garmin_cycling_workout(workout)
+                workout_id = 'DRY_RUN'
+                print(f"   ✅ Conversion OK (dry-run)")
+            else:
+                result_upload = garmin.upload_workout(workout)
+                workout_id = result_upload.get('workoutId', 'unknown')
+                print(f"   ✅ Uploadé - ID: {workout_id}")
 
             uploaded.append({
                 'code': code,
@@ -127,12 +147,26 @@ def upload_weekly_workouts(pdf_path: str):
         print(f"   - Durée: {workout.get('duration_total')}")
         print(f"   - {len(workout['intervals'])} intervalles")
 
-        try:
-            garmin_workout = convert_to_garmin_running_workout(workout)
-            result_upload = garmin.client.upload_workout(garmin_workout)
-            workout_id = result_upload.get('workoutId', 'unknown')
+        validation_errors = validate_workout_for_upload(workout)
+        if validation_errors:
+            for err in validation_errors:
+                print(f"   ❌ Validation: {err}")
+            errors.append({
+                'code': code,
+                'date': workout.get('date'),
+                'error': '; '.join(validation_errors)
+            })
+            continue
 
-            print(f"   ✅ Uploadé - ID: {workout_id}")
+        try:
+            if dry_run:
+                convert_to_garmin_running_workout(workout)
+                workout_id = 'DRY_RUN'
+                print(f"   ✅ Conversion OK (dry-run)")
+            else:
+                result_upload = garmin.upload_workout(workout)
+                workout_id = result_upload.get('workoutId', 'unknown')
+                print(f"   ✅ Uploadé - ID: {workout_id}")
 
             uploaded.append({
                 'code': code,
@@ -187,6 +221,7 @@ def upload_weekly_workouts(pdf_path: str):
         json.dump({
             'week': week,
             'period': period,
+            'dry_run': dry_run,
             'uploaded': uploaded,
             'skipped': skipped,
             'errors': errors
@@ -196,16 +231,21 @@ def upload_weekly_workouts(pdf_path: str):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: python scripts/upload_weekly_workouts.py <pdf_path>")
-        print("\nExemple:")
-        print('  python scripts/upload_weekly_workouts.py "/Users/aptsdae/Documents/Triathlon/Séances S07 (09_02 au 15_02)_Delalain C_2026.pdf"')
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="Parse puis upload hebdomadaire des séances Garmin"
+    )
+    parser.add_argument("pdf_path", help="Chemin vers le PDF de la semaine")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Valide parse+conversion sans upload vers Garmin Connect",
+    )
+    args = parser.parse_args()
 
-    pdf_path = sys.argv[1]
+    pdf_path = args.pdf_path
 
     if not Path(pdf_path).exists():
         print(f"❌ Erreur: Le fichier n'existe pas: {pdf_path}")
         sys.exit(1)
 
-    upload_weekly_workouts(pdf_path)
+    upload_weekly_workouts(pdf_path, dry_run=args.dry_run)

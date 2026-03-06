@@ -57,6 +57,21 @@ scheduled_tasks:
 
 # Commandes manuelles
 manual_commands:
+  - name: "parse_workouts"
+    trigger: "!parse-workouts /path/to/S07.pdf"  # Commande Clawdbot
+    description: "Parse un PDF de semaine via parser Docker (sans upload Garmin)"
+    action:
+      type: "execute_script"
+      script: "~/garmin_parser_docker/scripts/clawdbot_workflow.py"
+      args:
+        - "--action"
+        - "parse_workouts"
+        - "--file"
+        - "{file_path}"
+      notification:
+        title: "📄 PDF parsé"
+        message: "JSON généré pour {file_path}"
+
   - name: "prepare_email"
     trigger: "!prepare-email S07"  # Commande Clawdbot
     description: "Prépare l'email pour Stéphane avec le carnet rempli"

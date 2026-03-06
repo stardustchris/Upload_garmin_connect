@@ -34,6 +34,15 @@ class TriathlonPDFParserV3:
         if self.pdf:
             self.pdf.close()
 
+    def _sanitize_interval_durations(self, workout: Dict) -> Dict:
+        """Normalise les durées d'intervalles en MM:SS si du texte parasite est présent."""
+        for interval in workout.get("intervals", []):
+            raw = str(interval.get("duration", "")).strip()
+            match = re.search(r'(\d{1,2}:\d{2})', raw)
+            if match:
+                interval["duration"] = match.group(1)
+        return workout
+
     # ============================================================================
     # UTILITAIRES GÉNÉRAUX
     # ============================================================================
@@ -116,10 +125,10 @@ class TriathlonPDFParserV3:
 
     # Constantes pour échauffement Home Trainer standard
     HT_WARMUP_STANDARD = [
-        {"duration": "2:30", "power": "96à106"},
-        {"duration": "2:30", "power": "130à136"},
-        {"duration": "5:00", "power": "156à166"},
-        {"duration": "5:00", "power": "180à190"}
+        {"duration": "2:30", "power": "95à100"},
+        {"duration": "2:30", "power": "125à130"},
+        {"duration": "5:00", "power": "155à160"},
+        {"duration": "5:00", "power": "185à190"}
     ]
 
     def adjust_power_for_garmin(self, power_str: str, phase: str, is_home_trainer: bool = False, warmup_index: int = None) -> dict:
@@ -491,7 +500,8 @@ class TriathlonPDFParserV3:
                         table_parser.pdf = self.pdf
                         table_parser.pdf_path = self.pdf_path
 
-                        return table_parser.parse_cycling_workout(code)
+                        parsed_workout = table_parser.parse_cycling_workout(code)
+                        return self._sanitize_interval_durations(parsed_workout)
             except Exception as e:
                 # Si le parser de tableaux échoue, fallback sur l'ancien parser
                 print(f"⚠️  Erreur parser tableaux pour {code}: {e}, fallback sur parser texte")
@@ -521,10 +531,27 @@ class TriathlonPDFParserV3:
         if duration_match:
             workout["duration_total"] = duration_match.group(1)
 
+        # Extraire intensité/parcours pour les séances non structurées
+        intensity_match = re.search(
+            r'Intensité\s*:\s*(.*?)(?=\n\s*•|\n\s*Parcours\s*:|\n\s*Consignes\s*:|\Z)',
+            text,
+            re.DOTALL
+        )
+        if intensity_match:
+            workout["intensity"] = " ".join(intensity_match.group(1).split())
+
+        parcours_match = re.search(
+            r'Parcours\s*:\s*(.*?)(?=\n\s*•|\n\s*Consignes\s*:|\Z)',
+            text,
+            re.DOTALL
+        )
+        if parcours_match:
+            workout["parcours"] = " ".join(parcours_match.group(1).split())
+
         # Parser les intervalles depuis le TEXTE COMPLET (pas juste le tableau)
         # Cela permet de détecter les répétitions et blocs décomposés
         table_section = re.search(
-            r'Répartition de la séance\s*:(.*?)(?=Consignes|Récupération\s+\d|$)',
+            r'Répartition de la séance(?:\s*\([^)]*\))?\s*:(.*?)(?=Consignes|Récupération\s+\d|$)',
             text,
             re.DOTALL
         )
@@ -533,11 +560,23 @@ class TriathlonPDFParserV3:
             table_text = table_section.group(0)
             intervals = self._parse_cycling_full_text(table_text, workout["indoor"])
             workout["intervals"] = intervals
+        elif "AUX SENSATIONS" in text.upper():
+            # Séance cyclisme libre (ex: C33) sans tableau d'intervalles.
+            workout["workout_type"] = "UNSTRUCTURED"
+            workout["structured"] = False
+            if not workout.get("description"):
+                workout["description"] = "Séance libre aux sensations"
 
         # Extraire les notes
-        notes_match = re.search(r'Consignes\s*:(.*?)(?=\n\s*\n|\Z)', text, re.DOTALL)
+        notes_match = re.search(
+            r'Consignes\s*:(.*?)(?=\n\s*Course à pied\b|\n\s*(?:CAP|C|N)\d+\s*\(|\n\s*\n|\Z)',
+            text,
+            re.DOTALL
+        )
         if notes_match:
-            workout["notes"] = notes_match.group(1).strip()
+            notes = notes_match.group(1).strip()
+            notes = re.sub(r'\n\s*\d+\s*$', '', notes).strip()
+            workout["notes"] = notes
 
         return workout
 
@@ -1518,7 +1557,7 @@ class TriathlonPDFParserV3:
 
         # Parser le tableau
         table_section = re.search(
-            r'Répartition de la séance\s*:.*?Indications',
+            r'Répartition de la séance(?:\s*\([^)]*\))?\s*:.*?Indications',
             text,
             re.DOTALL
         )

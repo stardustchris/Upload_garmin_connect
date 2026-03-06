@@ -31,14 +31,94 @@ import argparse
 from pathlib import Path
 import json
 from datetime import datetime
+import subprocess
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.pdf_parser_v3 import TriathlonPDFParserV3
-from api.services.garmin_service import GarminService
-from src.garmin_workout_converter import convert_to_garmin_cycling_workout, convert_to_garmin_running_workout
 import pandas as pd
+
+
+def parse_workouts_from_pdf(pdf_path: str) -> dict:
+    """
+    Parse un PDF vers JSON en priorite via conteneur Docker, puis fallback local.
+
+    Retour:
+        {
+            "success": bool,
+            "parser_mode": "docker" | "local",
+            "output_json": "...",
+            "result": {...},
+            "error": "..."
+        }
+    """
+    pdf_file = Path(pdf_path).expanduser().resolve()
+    if not pdf_file.exists():
+        return {"success": False, "error": f"PDF introuvable: {pdf_path}"}
+
+    output_dir = Path("data/workouts_cache").resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_name = f"{pdf_file.stem}_parsed.json"
+    output_json = output_dir / output_name
+
+    parser_image = "garmin-training-parser:latest"
+    docker_run_base_commands = [
+        ["docker", "run", "--rm"],
+        ["sudo", "-n", "docker", "run", "--rm"],
+    ]
+
+    # 1) Tentative parser Docker
+    for run_base in docker_run_base_commands:
+        cmd = run_base + [
+            "-v",
+            f"{pdf_file.parent}:/input:ro",
+            "-v",
+            f"{output_dir}:/output",
+            parser_image,
+            "--input",
+            f"/input/{pdf_file.name}",
+            "--output",
+            f"/output/{output_name}",
+        ]
+        try:
+            completed = subprocess.run(
+                cmd,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            if completed.returncode == 0 and output_json.exists():
+                parsed = json.loads(output_json.read_text(encoding="utf-8"))
+                return {
+                    "success": True,
+                    "parser_mode": "docker",
+                    "output_json": str(output_json),
+                    "result": parsed,
+                }
+        except FileNotFoundError:
+            # docker / sudo absent sur cet environnement -> essaie le prochain
+            continue
+        except Exception:
+            # Erreur inattendue -> on tente fallback local
+            break
+
+    # 2) Fallback local (comportement historique)
+    try:
+        with TriathlonPDFParserV3(str(pdf_file)) as parser:
+            parsed = parser.parse()
+        output_json.write_text(
+            json.dumps(parsed, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        return {
+            "success": True,
+            "parser_mode": "local",
+            "output_json": str(output_json),
+            "result": parsed,
+        }
+    except Exception as e:
+        return {"success": False, "error": f"Parsing échoué (docker+local): {e}"}
 
 
 def upload_workouts(pdf_path: str) -> dict:
@@ -54,13 +134,27 @@ def upload_workouts(pdf_path: str) -> dict:
     print(f"📄 Action: UPLOAD WORKOUTS")
     print(f"   Fichier: {pdf_path}\n")
 
+    try:
+        from api.services.garmin_service import GarminService
+        from src.garmin_workout_converter import (
+            convert_to_garmin_cycling_workout,
+            convert_to_garmin_running_workout,
+        )
+    except ModuleNotFoundError as e:
+        return {"success": False, "error": f"Dépendance upload manquante: {e}"}
+
     pdf_file = Path(pdf_path)
     if not pdf_file.exists():
         return {"success": False, "error": f"PDF introuvable: {pdf_path}"}
 
-    # Parser le PDF
-    with TriathlonPDFParserV3(pdf_path) as parser:
-        result = parser.parse()
+    # Parser le PDF (Docker prioritaire)
+    parse_result = parse_workouts_from_pdf(pdf_path)
+    if not parse_result.get("success"):
+        return {"success": False, "error": parse_result.get("error", "Échec parsing")}
+
+    result = parse_result["result"]
+    print(f"✅ Parsing terminé via mode: {parse_result['parser_mode']}")
+    print(f"   JSON: {parse_result['output_json']}")
 
     week = result.get('week', 'Unknown')
     print(f"✅ Semaine détectée: {week}")
@@ -116,6 +210,8 @@ def upload_workouts(pdf_path: str) -> dict:
     summary = {
         'success': True,
         'week': week,
+        'parser_mode': parse_result['parser_mode'],
+        'parsed_json': parse_result['output_json'],
         'uploaded_count': len(uploaded),
         'uploaded': uploaded,
         'skipped': skipped,
@@ -133,6 +229,34 @@ def upload_workouts(pdf_path: str) -> dict:
     return summary
 
 
+def parse_workouts(pdf_path: str) -> dict:
+    """
+    Action dédiée: parser PDF -> JSON, sans upload Garmin.
+    """
+    print("📄 Action: PARSE WORKOUTS")
+    print(f"   Fichier: {pdf_path}\n")
+    result = parse_workouts_from_pdf(pdf_path)
+    if not result.get("success"):
+        return {"success": False, "error": result.get("error", "Erreur parsing")}
+
+    parsed = result["result"]
+    week = parsed.get("week", "Unknown")
+    workouts_count = len(parsed.get("workouts", []))
+    print(f"✅ Semaine détectée: {week}")
+    print(f"✅ Workouts extraits: {workouts_count}")
+    print(f"✅ Mode parser: {result['parser_mode']}")
+    print(f"✅ JSON: {result['output_json']}")
+
+    return {
+        "success": True,
+        "week": week,
+        "workouts_count": workouts_count,
+        "parser_mode": result["parser_mode"],
+        "parsed_json": result["output_json"],
+        "timestamp": datetime.now().isoformat(),
+    }
+
+
 def fill_excel(xls_path: str, google_drive_id: str = None) -> dict:
     """
     Action 2: Convertir XLS → XLSX + Remplir avec données Garmin
@@ -146,6 +270,11 @@ def fill_excel(xls_path: str, google_drive_id: str = None) -> dict:
     """
     print(f"📊 Action: FILL EXCEL")
     print(f"   Fichier: {xls_path}\n")
+
+    try:
+        from api.services.garmin_service import GarminService
+    except ModuleNotFoundError as e:
+        return {"success": False, "error": f"Dépendance Garmin manquante: {e}"}
 
     xls_file = Path(xls_path)
     if not xls_file.exists():
@@ -291,7 +420,7 @@ Généré automatiquement par Garmin Automation
 def main():
     parser = argparse.ArgumentParser(description='Workflow Clawdbot pour Garmin Automation')
     parser.add_argument('--action', required=True,
-                        choices=['upload_workouts', 'fill_excel', 'prepare_email'],
+                        choices=['upload_workouts', 'parse_workouts', 'fill_excel', 'prepare_email'],
                         help='Action à exécuter')
     parser.add_argument('--file', required=True,
                         help='Fichier à traiter')
@@ -308,6 +437,8 @@ def main():
     try:
         if args.action == 'upload_workouts':
             result = upload_workouts(args.file)
+        elif args.action == 'parse_workouts':
+            result = parse_workouts(args.file)
         elif args.action == 'fill_excel':
             result = fill_excel(args.file)
         elif args.action == 'prepare_email':

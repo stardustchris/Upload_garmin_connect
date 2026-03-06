@@ -17,10 +17,10 @@ class TableBasedWorkoutParser:
 
     # Échauffement HT standard (Home Trainer)
     HT_WARMUP_STANDARD = [
-        {"duration": "2:30", "power": "96à106"},
-        {"duration": "2:30", "power": "130à136"},
-        {"duration": "5:00", "power": "156à166"},
-        {"duration": "5:00", "power": "180à190"}
+        {"duration": "2:30", "power": "95à100"},
+        {"duration": "2:30", "power": "125à130"},
+        {"duration": "5:00", "power": "155à160"},
+        {"duration": "5:00", "power": "185à190"}
     ]
 
     def __init__(self, pdf_path: str):
@@ -140,7 +140,8 @@ class TableBasedWorkoutParser:
                     durations_str,
                     cadences_str,
                     powers_str,
-                    phase
+                    phase,
+                    is_home_trainer
                 )
                 intervals.extend(rep_intervals)
             else:
@@ -161,7 +162,8 @@ class TableBasedWorkoutParser:
         durations_str: str,
         cadences_str: str,
         powers_str: str,
-        phase: str
+        phase: str,
+        is_home_trainer: bool
     ) -> List[Dict]:
         """
         Parse un bloc avec répétitions (ex: "3 x (01:00-02:00-01:00-01:00)")
@@ -182,118 +184,129 @@ class TableBasedWorkoutParser:
         """
         intervals = []
 
-        # Splitter les lignes
         duration_lines = [line.strip() for line in durations_str.split('\n') if line.strip()]
         cadence_lines = [line.strip() for line in cadences_str.split('\n') if line.strip()]
         power_lines = [line.strip() for line in powers_str.split('\n') if line.strip()]
 
-        # PHASE 1: Identifier toutes les déclarations de répétition
-        repetition_declarations = []
-        for dur_idx, dur_line in enumerate(duration_lines):
-            rep_match = re.match(r'(\d+)\s*x\s*\(([^)]+)\)\s*(?:\([^)]*\))?.*', dur_line)
+        c_idx = 0
+        d_idx = 0
+
+        while d_idx < len(duration_lines):
+            line = duration_lines[d_idx]
+            rep_match = re.match(r'(\d+)\s*x\s*\(([^)]+)\)\s*(?:\([^)]*\))?.*', line)
+
             if rep_match:
                 repeat_count = int(rep_match.group(1))
-                repeat_format = rep_match.group(2)
-                expected_count = len(repeat_format.split('-'))
-                position_match = re.search(r'\(([^)]*Position[^)]*)\)', dur_line)
-                position = position_match.group(1) if position_match else ""
-
-                repetition_declarations.append({
-                    "line_idx": dur_idx,
-                    "repeat_count": repeat_count,
-                    "expected_count": expected_count,
-                    "position": position
-                })
-
-        # PHASE 2: Parser les intervalles en tenant compte des répétitions
-        cadence_idx = 0  # Index dans cadence_lines/power_lines
-
-        for dur_idx, dur_line in enumerate(duration_lines):
-            # Vérifier si cette ligne est une déclaration de répétition
-            rep_decl = next((r for r in repetition_declarations if r["line_idx"] == dur_idx), None)
-
-            if rep_decl:
-                # C'est une déclaration de répétition
+                pattern_tokens = [t.strip() for t in rep_match.group(2).split('-') if t.strip()]
                 pattern_intervals = []
+                d_idx += 1
 
-                # Extraire les expected_count intervalles suivants
-                for i in range(rep_decl["expected_count"]):
-                    if cadence_idx + i < len(cadence_lines):
-                        # La durée est dans duration_lines[dur_idx + 1 + i]
-                        dur_data = duration_lines[dur_idx + 1 + i] if (dur_idx + 1 + i) < len(duration_lines) else "00:00"
+                for token in pattern_tokens:
+                    token_duration = self._extract_duration_mmss(token)
+                    if not token_duration:
+                        continue
 
-                        # Nettoyer (enlever position si présente)
-                        duration_clean = re.sub(r'\s*\([^)]*\)', '', dur_data).strip()
+                    token_position = ""
+                    if d_idx < len(duration_lines):
+                        header_line = duration_lines[d_idx]
+                        if token in header_line and 'décomposées en' in header_line:
+                            pos_match = re.search(r'\(([^)]*Position[^)]*)\)', header_line)
+                            token_position = pos_match.group(1) if pos_match else ""
+                            d_idx += 1
 
-                        # Ajuster la puissance pour HT si nécessaire
-                        power_raw = power_lines[cadence_idx + i]
-                        power_adjusted = self._adjust_power_for_ht(power_raw) if self._is_ht_adjustment_needed(phase) else power_raw
+                    if '*' in token:
+                        target_secs = self._duration_to_seconds(token_duration)
+                        consumed_secs = 0
+                        while d_idx < len(duration_lines) and consumed_secs < target_secs and c_idx < len(cadence_lines):
+                            sub_line = duration_lines[d_idx]
+                            if re.match(r'(\d+)\s*x\s*\(', sub_line):
+                                break
+                            sub_dur = self._extract_duration_mmss(sub_line)
+                            if not sub_dur:
+                                d_idx += 1
+                                continue
 
-                        interval = {
-                            "phase": phase,
-                            "duration": duration_clean,
-                            "cadence_rpm": cadence_lines[cadence_idx + i],
-                            "cadence_upload_to_garmin": True,
-                            "power_watts": power_adjusted,
-                            "power_watts_original": power_raw,
-                            "power_adjustment_w": "+15W (HT)" if self._is_ht_adjustment_needed(phase) else None,
-                            "position": rep_decl["position"]
-                        }
-                        pattern_intervals.append(interval)
+                            pos_match = re.search(r'\(([^)]*Position[^)]*)\)', sub_line)
+                            sub_position = pos_match.group(1) if pos_match else token_position
 
-                # Répéter le pattern repeat_count fois
-                for iteration in range(rep_decl["repeat_count"]):
+                            power_raw = power_lines[c_idx] if c_idx < len(power_lines) else "0à0"
+                            adjust = is_home_trainer and self._is_ht_adjustment_needed(phase)
+                            power_adj = self._adjust_power_for_ht(power_raw) if adjust else power_raw
+
+                            pattern_intervals.append({
+                                "phase": phase,
+                                "duration": sub_dur,
+                                "cadence_rpm": cadence_lines[c_idx],
+                                "cadence_upload_to_garmin": True,
+                                "power_watts": power_adj,
+                                "power_watts_original": power_raw if adjust else None,
+                                "power_adjustment_w": "+15W (HT)" if adjust else None,
+                                "position": sub_position
+                            })
+
+                            consumed_secs += self._duration_to_seconds(sub_dur)
+                            c_idx += 1
+                            d_idx += 1
+                    else:
+                        selected_line = token_duration
+                        if d_idx < len(duration_lines):
+                            candidate = self._extract_duration_mmss(duration_lines[d_idx])
+                            if candidate == token_duration:
+                                selected_line = duration_lines[d_idx]
+                                d_idx += 1
+
+                        if c_idx < len(cadence_lines):
+                            pos_match = re.search(r'\(([^)]*Position[^)]*)\)', str(selected_line))
+                            position = pos_match.group(1) if pos_match else token_position
+                            power_raw = power_lines[c_idx] if c_idx < len(power_lines) else "0à0"
+                            adjust = is_home_trainer and self._is_ht_adjustment_needed(phase)
+                            power_adj = self._adjust_power_for_ht(power_raw) if adjust else power_raw
+
+                            pattern_intervals.append({
+                                "phase": phase,
+                                "duration": token_duration,
+                                "cadence_rpm": cadence_lines[c_idx],
+                                "cadence_upload_to_garmin": True,
+                                "power_watts": power_adj,
+                                "power_watts_original": power_raw if adjust else None,
+                                "power_adjustment_w": "+15W (HT)" if adjust else None,
+                                "position": position
+                            })
+                            c_idx += 1
+
+                for iteration in range(repeat_count):
                     for interval in pattern_intervals:
                         interval_copy = interval.copy()
                         interval_copy["repetition_iteration"] = iteration + 1
-                        interval_copy["repetition_total"] = rep_decl["repeat_count"]
+                        interval_copy["repetition_total"] = repeat_count
                         intervals.append(interval_copy)
+                continue
 
-                # Avancer cadence_idx
-                cadence_idx += rep_decl["expected_count"]
+            if 'décomposées en' in line:
+                d_idx += 1
+                continue
 
-            else:
-                # Ligne normale (pas une déclaration de répétition)
-                # Vérifier si ce n'est pas un intervalle déjà consommé par une répétition
-                if dur_idx > 0:
-                    # Vérifier si la ligne précédente était une déclaration de répétition
-                    prev_rep = next((r for r in repetition_declarations if r["line_idx"] == dur_idx - 1), None)
-                    if prev_rep:
-                        # Skip car déjà consommé
-                        continue
+            duration_clean = self._extract_duration_mmss(line)
+            if duration_clean and c_idx < len(cadence_lines):
+                pos_match = re.search(r'\(([^)]*Position[^)]*)\)', line)
+                position = pos_match.group(1) if pos_match else ""
+                power_raw = power_lines[c_idx] if c_idx < len(power_lines) else "0à0"
+                adjust = is_home_trainer and self._is_ht_adjustment_needed(phase)
+                power_adj = self._adjust_power_for_ht(power_raw) if adjust else power_raw
 
-                    # Vérifier si on est dans la zone d'une répétition
-                    in_repetition_zone = False
-                    for rep_decl in repetition_declarations:
-                        if rep_decl["line_idx"] < dur_idx < rep_decl["line_idx"] + rep_decl["expected_count"] + 1:
-                            in_repetition_zone = True
-                            break
+                intervals.append({
+                    "phase": phase,
+                    "duration": duration_clean,
+                    "cadence_rpm": cadence_lines[c_idx],
+                    "cadence_upload_to_garmin": True,
+                    "power_watts": power_adj,
+                    "power_watts_original": power_raw if adjust else None,
+                    "power_adjustment_w": "+15W (HT)" if adjust else None,
+                    "position": position
+                })
+                c_idx += 1
 
-                    if in_repetition_zone:
-                        continue  # Skip car fait partie d'une répétition
-
-                # Intervalle normal
-                if cadence_idx < len(cadence_lines):
-                    position_match = re.search(r'\(([^)]*Position[^)]*)\)', dur_line)
-                    position = position_match.group(1) if position_match else ""
-                    duration_clean = re.sub(r'\s*\([^)]*\)', '', dur_line).strip()
-
-                    # Ajuster la puissance pour HT si nécessaire
-                    power_raw = power_lines[cadence_idx]
-                    power_adjusted = self._adjust_power_for_ht(power_raw) if self._is_ht_adjustment_needed(phase) else power_raw
-
-                    interval = {
-                        "phase": phase,
-                        "duration": duration_clean,
-                        "cadence_rpm": cadence_lines[cadence_idx],
-                        "cadence_upload_to_garmin": True,
-                        "power_watts": power_adjusted,
-                        "power_watts_original": power_raw,
-                        "power_adjustment_w": "+15W (HT)" if self._is_ht_adjustment_needed(phase) else None,
-                        "position": position
-                    }
-                    intervals.append(interval)
-                    cadence_idx += 1
+            d_idx += 1
 
         return intervals
 
@@ -338,6 +351,9 @@ class TableBasedWorkoutParser:
 
             # Nettoyer duration (enlever position)
             duration_clean = re.sub(r'\s*\([^)]*\)', '', duration).strip()
+            duration_clean = self._extract_duration_mmss(duration_clean)
+            if not duration_clean:
+                continue
 
             # Ajuster puissance si HT (sauf échauffement/récup qui sont déjà forcés)
             power_adjusted = power
@@ -359,6 +375,26 @@ class TableBasedWorkoutParser:
             intervals.append(interval)
 
         return intervals
+
+    def _extract_duration_mmss(self, text: str) -> Optional[str]:
+        """
+        Extrait un token de durée MM:SS depuis une cellule potentiellement bruitée.
+
+        Exemples:
+        - "08:00* décomposées en :" -> "08:00"
+        - "REPETITIONS 1,3 : POSITION AERO." -> None
+        """
+        if not text:
+            return None
+        match = re.search(r'(\d{1,2}:\d{2})', text)
+        if not match:
+            return None
+        return match.group(1)
+
+    def _duration_to_seconds(self, duration_mmss: str) -> int:
+        """Convertit MM:SS en secondes."""
+        mm, ss = duration_mmss.split(":")
+        return int(mm) * 60 + int(ss)
 
     def _is_ht_adjustment_needed(self, phase: str) -> bool:
         """

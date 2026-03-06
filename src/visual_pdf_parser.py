@@ -157,10 +157,10 @@ def fix_c19_manually() -> Dict:
         "description": "sur HT",
         "intervals": [
             # ÉCHAUFFEMENT HT (4 blocs)
-            {"phase": "Echauffement", "duration": "2:30", "cadence_rpm": "libre", "power_watts": "96à106"},
-            {"phase": "Echauffement", "duration": "2:30", "cadence_rpm": "libre", "power_watts": "130à136"},
-            {"phase": "Echauffement", "duration": "5:00", "cadence_rpm": "libre", "power_watts": "156à166"},
-            {"phase": "Echauffement", "duration": "5:00", "cadence_rpm": "libre", "power_watts": "180à190"},
+            {"phase": "Echauffement", "duration": "2:30", "cadence_rpm": "libre", "power_watts": "95à100"},
+            {"phase": "Echauffement", "duration": "2:30", "cadence_rpm": "libre", "power_watts": "125à130"},
+            {"phase": "Echauffement", "duration": "5:00", "cadence_rpm": "libre", "power_watts": "155à160"},
+            {"phase": "Echauffement", "duration": "5:00", "cadence_rpm": "libre", "power_watts": "185à190"},
 
             # CORPS DE SÉANCE - À COMPLÉTER AVEC LES VRAIES DONNÉES DU PDF
             # TODO: Extraire depuis le PDF
